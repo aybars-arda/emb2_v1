@@ -1,0 +1,22 @@
+const int BTN = 2;                // wie in b) (falls Grove: passenden Port-Pin wählen)
+bool lastPressed = true;          // INPUT_PULLUP: true = nicht gedrückt (HIGH)
+
+void setup() {
+  pinMode(LED_BUILTIN, OUTPUT);
+  pinMode(BTN, INPUT_PULLUP);
+  Serial.begin(115200);           // Serial Monitor später auf 115200 stellen
+  Serial.println("Start: LED/Taster/Serial");
+}
+
+void loop() {
+  bool pressed = (digitalRead(BTN) == LOW); // LOW = gedrückt
+  if (pressed != lastPressed) {             // nur reagieren, wenn sich etwas ändert
+    // "halten = an" Logik: gedrückt -> LED AN, losgelassen -> LED AUS
+    digitalWrite(LED_BUILTIN, pressed ? HIGH : LOW);
+
+    Serial.print("LED ist jetzt: ");
+    Serial.println(pressed ? "AN" : "AUS");
+
+    lastPressed = pressed;
+  }
+}
