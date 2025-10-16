@@ -1,0 +1,8 @@
+void setup() {
+  pinMode(LED_BUILTIN, OUTPUT);   // Ausgang initialisieren
+  digitalWrite(LED_BUILTIN, HIGH); // LED einschalten
+}
+
+void loop() {
+  // leer: LED bleibt an
+}
