@@ -1,0 +1,9 @@
+const int BTN = 2; // ggf. 3, wenn Grove in D3 steckt
+void setup() {
+  pinMode(LED_BUILTIN, OUTPUT);
+  pinMode(BTN, INPUT_PULLUP);
+}
+void loop() {
+  bool pressed = (digitalRead(BTN) == LOW);
+  digitalWrite(LED_BUILTIN, pressed ? HIGH : LOW);
+}
